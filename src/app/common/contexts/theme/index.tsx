@@ -7,7 +7,7 @@ type Props = {
 };
 
  const CommonThemeProvider = ({ children }: Props) => {
-  return <ThemeProvider attribute="class">{children}</ThemeProvider>;
+  return <ThemeProvider attribute="class" defaultTheme="dark" storageKey="theme">{children}</ThemeProvider>;
 };
 
 export default CommonThemeProvider
