@@ -1,29 +1,26 @@
-"use client";
 import React from "react";
-import { useTheme } from "next-themes";
 import Link from "next/link";
-import ThemeIcon from "../theme-icon";
 import dynamic from "next/dynamic";
+import LanguageSwitcher from "../language-switcher";
 const ThemeIconDynamic = dynamic(() => import("../theme-icon"), {
   ssr: false,
 });
+const LangSwitchDynamic = dynamic(() => import("../language-switcher"), {
+  ssr: false,
+});
 
-const Button = () => {
-  const { theme } = useTheme();
-
-  const isDarkMode = theme === "dark";
-
+type Props = {
+  lang: string;
+};
+const Button = ({ lang }: Props) => {
   return (
     <div className="z-50 sticky top-0">
-      <nav
-        className={`flex justify-between items-center p-4 bg-${
-          isDarkMode ? "gray-800" : "white"
-        }`}
-      >
-        <Link href="/" className="text-lg font-bold">
+      <nav className={`flex justify-between items-center p-4`}>
+        <Link href={`/${lang}`} className="text-lg font-bold">
           My Website
         </Link>
-        <ThemeIconDynamic isDarkMode={isDarkMode} />
+        <LangSwitchDynamic lang={lang} />
+        <ThemeIconDynamic />
       </nav>
     </div>
   );

@@ -3,10 +3,9 @@
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 
-type Props = { isDarkMode: boolean };
-
-const ThemeIcon = ({ isDarkMode }: Props) => {
-  const { setTheme } = useTheme();
+const ThemeIcon = () => {
+  const { setTheme, theme } = useTheme();
+  const isDarkMode = theme === "dark";
 
   return (
     <button
